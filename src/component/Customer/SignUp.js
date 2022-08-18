@@ -18,10 +18,10 @@ const SignUp = () => {
 
     const submitForm =(event) =>{
         event.preventDefault();
-        // if(error.isError){
-        //     toast.error("Form data is invalid, correct all details then submit!!");
-        //     return ;
-        // }
+        if(error.isError){
+            toast.error("Form data is invalid, correct all details then submit!!");
+            return ;
+        }
         console.log(data);
     
         // Creating newUser Object...
@@ -36,7 +36,7 @@ const SignUp = () => {
     
         connection.post("/api/v1/auth/register", newUser)
         .then(response => {
-            toast.success("created Successfully !! user id"+response.data.id)
+            toast.success("created Successfully !! user id "+response.data.id)
             console.log(response.data);
             return response.data;
         })
@@ -60,6 +60,8 @@ const SignUp = () => {
         
     }
 
+
+
     return (
         <Base>
             <Container>
@@ -82,7 +84,8 @@ const SignUp = () => {
                                     id="name"
                                     onChange={(e)=>setData({...data,name:e.target.value})}
                                     value={data.name}
-                                    invalid = {error.errors?.response?.data?.name ? true:false }/> 
+                                    invalid = {error.errors?.response?.data?.name ? true:false }
+                                    required/> 
 
                                     <FormFeedback>
                                         {error.errors?.response?.data?.name}
@@ -98,7 +101,8 @@ const SignUp = () => {
                                     id="contact"
                                     onChange={(e)=>setData({...data,contact_detail:e.target.value})}
                                     value={data.contact_detail}
-                                    invalid = {error.errors?.response?.data?.name ? true:false }/> 
+                                    invalid = {error.errors?.response?.data?.name ? true:false }
+                                    required/> 
 
                                     <FormFeedback>
                                         {error.errors?.response?.data?.name}
@@ -112,14 +116,15 @@ const SignUp = () => {
                                     id="password"
                                     onChange={(e)=>setData({...data,password:e.target.value})}
                                     value={data.password}
-                                    invalid = {error.errors?.response?.data?.contact_detail ? true:false }/> 
+                                    invalid = {error.errors?.response?.data?.contact_detail ? true:false }
+                                    required/> 
 
                                     <FormFeedback>
                                         {error.errors?.response?.data?.contact_detail}
                                     </FormFeedback> 
                             </FormGroup>
                             <FormGroup check>
-                                <Input type="checkbox" />
+                                <Input type="checkbox" required />
                                 {' '}
                                 <Label check>
                                     Check me out
@@ -132,7 +137,7 @@ const SignUp = () => {
                             </Container>
                             
                             <Container>
-                                <Button color="dark" className="mt-2" tag={ReactLink} to="/customerLogin">If you are already Register Click here</Button>
+                                <Button color="dark" className="mt-2" tag={ReactLink} to="/customerLogin">Login</Button>
                             </Container>
                         </Form>
                     </CardBody>

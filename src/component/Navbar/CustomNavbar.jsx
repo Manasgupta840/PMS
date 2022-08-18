@@ -33,11 +33,14 @@ const CustomNavbar = (args) => {
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="me-auto" navbar>
+                    <NavItem>
+                            <NavLink tag={ReactLink} to="/">Home</NavLink>
+                        </NavItem>
                         <NavItem>
                             <NavLink tag={ReactLink} to="/about">About Us</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink tag={ReactLink} to="https://github.com/reactstrap/reactstrap">
+                            <NavLink tag={ReactLink} to="/property-list">
                                 Properties
                             </NavLink>
                         </NavItem>
@@ -52,7 +55,6 @@ const CustomNavbar = (args) => {
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>
-                    <NavbarText>Simple Text</NavbarText>
                 </Collapse>
 
             </Navbar>

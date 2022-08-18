@@ -1,3 +1,5 @@
+
+import Footer from "../Footer/Footer";
 import CustomNavbar from "../Navbar/CustomNavbar";
 
 const Base = ({title = "Welcome to our website" , children}) =>{
@@ -8,7 +10,7 @@ const Base = ({title = "Welcome to our website" , children}) =>{
 
             {children}
 
-            <h1>This is footer</h1>
+            <Footer />
 
 
 

@@ -5,10 +5,10 @@ import { Row, Col, Image, Button, Card, ListGroup, Table } from "react-bootstrap
 import Base from "../Base/Base";
 
 
-export default function CustomerDashboard() {
+export default function ListProperty() {
   const [property, setProperty] = useState([]);
 
-  useEffect(() => {
+   useEffect(() => {
     connection
       .get("/api/properties")
       .then(response => {
@@ -81,6 +81,4 @@ export default function CustomerDashboard() {
     </div >
     </Base>
   )
-
-
 }

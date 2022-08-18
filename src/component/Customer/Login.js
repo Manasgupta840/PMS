@@ -5,7 +5,7 @@ import connection from '../../services/connection'
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { doLogin, isLoggedIn } from "../../auth";
-import { Navigate } from "react-router-dom";
+import{NavLink as ReactLink} from "react-router-dom";
 const Login = () => {
     const [loginDetail, setLoginDetail] = useState({
         username: "",
@@ -27,15 +27,6 @@ const Login = () => {
             username:"",
             password:""
         })
-    }
-    const dashboard =() =>{
-        
-        if(isLoggedIn()){
-            console.log("I am inside the function")
-            return <Navigate to={"/customer/dashboard"} />;
-        }
-        return;
-
     }
 
      const submitForm = (e) => {
@@ -59,10 +50,12 @@ const Login = () => {
                     })
 
                     toast.success("Login Successfully")
-                    dashboard();
+                    console.log(isLoggedIn());
+                    if(isLoggedIn()){
+                        console.log("I am inside the function")
+                        return <ReactLink to={"/customer/dashboard"}/>;
+                    }
 
-                    
-                    
             })
             .catch(error => {
                 console.log(error)
@@ -81,7 +74,7 @@ const Login = () => {
         <Base>
             <Container>
                 <Row className="mt-4">
-                    <Col sm={{ size: 6, offset: 3 }} >
+                    <Col sm={{ size: 8, offset: 3 }} >
                         <Card color="primary" outline="inverse">
                             <CardHeader>
                                 <h3>Customer Login</h3>
